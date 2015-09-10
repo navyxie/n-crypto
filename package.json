@@ -1,0 +1,34 @@
+{
+	"name": "n-crypto",
+	"version": "0.0.0",
+	"keywords":[
+		"MD5",
+		"RSA",
+		"加密",
+		"解密"
+	],
+	"dependencies": {
+
+	},
+	"devDependencies": {
+		"mocha": "^2.2.5",
+		"should": "^7.0.2"
+	},
+	"description": "加密解密模块",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/navyxie/n-crypto.git"
+	},
+	"author": {
+		"name": "navyxie"
+	},
+	"license": "ISC",
+	"homepage": "https://github.com/navyxie/n-crypto",
+	"maintainers": [
+		{
+			"name": "navyxie",
+			"email": "navyxie2010@gmail.com"
+		}
+	]
+}
