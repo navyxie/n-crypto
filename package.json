@@ -1,6 +1,6 @@
 {
 	"name": "n-crypto",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"keywords":[
 		"MD5",
 		"RSA",
@@ -8,7 +8,7 @@
 		"解密"
 	],
 	"dependencies": {
-
+		"utf8": "^2.1.0"
 	},
 	"devDependencies": {
 		"mocha": "^2.2.5",
