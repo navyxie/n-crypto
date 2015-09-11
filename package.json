@@ -1,6 +1,6 @@
 {
 	"name": "n-crypto",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"keywords":[
 		"MD5",
 		"RSA",
@@ -12,6 +12,8 @@
 	},
 	"devDependencies": {
 		"mocha": "^2.2.5",
+		"coveralls": "^2.11.3",
+		"istanbul": "^0.3.17",
 		"should": "^7.0.2"
 	},
 	"description": "加密解密模块",
