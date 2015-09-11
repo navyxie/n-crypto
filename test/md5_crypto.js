@@ -1,5 +1,5 @@
 var md5_crypto = require('../lib/md5_crypto');
-var md5_key = 'navy_test_201509110233';
+var md5_key = '0123456789abcd0123456789';
 var encryptStr = 'navy_encryptStr_201509110233_伟大的中国';
 var md5Sign = '532885a7bb2beb8de68a3a4b3f5edf57';
 var should = require('should');
