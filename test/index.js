@@ -122,17 +122,12 @@ describe('index',function(){
 			});
 		});
 		describe('#verify()',function(){
-			// it('it should be ok',function(){
-			// 	nCrypto.verify(encryptStr,CONST.des_md5_sign,MD5,true).should.be.equal(true);
-			// });
-			// it('it should be not ok',function(){
-			// 	var cloneJson = util.clone(encryptJson);
-			// 	cloneJson.country = '伟大的中国';
-			// 	nCrypto.verify(cloneJson,md5Sign,DES).should.be.equal(false);
-			// });
-			// it('it should be not ok',function(){
-			// 	nCrypto.verify(encryptJson,md5Sign+'error',DES).should.be.equal(false);
-			// });
+			it('it should be ok',function(){
+				nCrypto.verify(encryptData,CONST.des_md5_sign,MD5,DES).should.be.equal(true);
+			});
+			it('it should be not ok',function(){
+				nCrypto.verify(encryptData,CONST.des_md5_sign+'error',MD5,DES).should.be.equal(false);
+			});
 		});
 		describe('#decrypt()',function(){
 			it('it should be ok',function(){
@@ -142,6 +137,18 @@ describe('index',function(){
 			it('it should be ok',function(){
 				var signVal = nCrypto.decrypt(encryptData2,DES);
 				signVal.should.be.equal(encryptStr2);
+			});
+		});
+		describe('#encrypt()->JSON',function(){
+			it('it should be ok',function(){
+				var signVal = nCrypto.encrypt(encryptJson,DES);
+				signVal.should.be.equal(CONST.des_encrypt_json_str);
+			});
+		});
+		describe('#decrypt()->JSON',function(){
+			it('it should be ok',function(){
+				var jsonData = nCrypto.decryptToJson(CONST.des_encrypt_json_str,DES);
+				jsonData.name.should.be.equal(encryptJson.name)
 			});
 		});
 	});

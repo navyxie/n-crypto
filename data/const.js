@@ -30,6 +30,8 @@ module.exports = {
 	sign_type:{
 		MD5:'MD5',
 		RSA:'RSA',
-		DES:'DES'
-	}
+		DES:'DES',
+		AES:'AES'
+	},
+	des_encrypt_json_str:'zb74/AdUFVSKSFGP0lZSN1nHJ70b+X+Rx4WEawWfmctpBIKlUwzTfn/67rts8VCGZq4UTFUVks34+JF4ypVqvQ=='
 }
