@@ -1,24 +1,36 @@
-# 加密与解密
+# 签名与验签&加密与解密
+    算法说明：签名算法MD5和RSA(RSA-SHA1)，数据加密算法RSA(RSA_NO_PADDING,node>0.12.0),AES(aes-128-ecb),DES(des-ede3)，返回base64格式数据。
 
 ## 安装
     npm install n-crypto
 ## 初始化
+
+```js
     var NCRYPTO = require('n-crypto');
     var nCrypto = new NCRYPTO({
 		md5_key:'',//md5 key
+		des_key:des_key:'',//des key,24个字符长度
+		aes_key:aes_key:'',//aes key,16个字符长度
 		merchant_pri_key:'',//rsa pri key
-		npay_pub_key:''//rsa pub  key
+		npay_pub_key:'',//rsa pub  key
 	})
+```
+
 ## API
 
-[`encrypt`](#encrypt)
+[`sign`](#sign)
 
 [`verify`](#verify)
 
+[`encrypt`](#encrypt)
 
-### 加密API
+[`decrypt`](#decrypt)
 
-<a name="encrypt" />
+
+### 生成签名的API
+
+<a name="sign" />
+
 ```js
 var encryptJson = {
 	name:"navy",
@@ -27,13 +39,14 @@ var encryptJson = {
 	age:201509110233
 }
 var sign_type = 'MD5'
-var signVal = nCrypto.encrypt(encryptJson,sign_type);
+var signVal = nCrypto.sign(encryptJson,sign_type);
 console.log(signVal);//加密后返回的加密串
 ```
 
 ### 验证签名API
 
 <a name="verify" />
+
 ```js
 var encryptJson = {
 	name:"navy",
@@ -45,5 +58,37 @@ var sign_type = 'MD5';
 var md5Sign = 'a12b2084d8c7297a25fcfe452af8257c';
 var verifyResult =  nCrypto.verify(encryptJson,md5Sign,sign_type);
 console.log(verifyResult);//boolean值，true表示验签成功，false表示验签失败
-console.log(signVal);//加密后返回的加密串
 ```
+
+### 加密数据的API
+
+<a name="encrypt" />
+
+```js
+var encryptJson = {
+	name:"navy",
+	version:"1.0",
+	country:"中国",
+	age:201509110233
+}
+var sign_type = 'AES'；//RSA(node>=0.12),AES,DES
+var encryptData = nCrypto.encrypt(encryptJson,sign_type);//base64
+console.log(encryptData);//加密后返回的base64加密串
+```
+
+### 解密数据的API
+
+<a name="decrypt" />
+
+```js
+var encryptJson = {
+	name:"navy",
+	version:"1.0",
+	country:"中国",
+	age:201509110233
+}
+var sign_type = 'AES'；//RSA(node>=0.12),AES,DES
+var decryptData = nCrypto.decrypt(encryptJson,sign_type);//原始字符串
+console.log(decryptData);//加密后返回的base64加密串
+```
+

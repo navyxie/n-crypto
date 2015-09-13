@@ -1,3 +1,4 @@
+var utf8 = require('utf8');
 var should = require('should');
 var CONST = require('../data/const');
 var rsa_crypto = require('../lib/rsa_crypto');
@@ -10,36 +11,47 @@ var merchant_encryptData = CONST.merchant_encryptData;
 var nPay_encryptStr = CONST.nPay_encryptStr;
 var nPay_encryptData = CONST.nPay_encryptData;
 describe('rsa_crypto',function(){
-	describe('#rsaSign()->merchant',function(){
+	describe('#sign()->merchant',function(){
 		it('it should be ok',function(){
-			rsa_crypto.rsaSign(merchant_encryptStr,merchant_pri_key).should.be.equal(merchant_encryptData);
+			rsa_crypto.sign(merchant_encryptStr,merchant_pri_key).should.be.equal(merchant_encryptData);
 		});
 		it('it should be not ok',function(){
-			rsa_crypto.rsaSign(merchant_encryptStr,merchant_pri_key+'abc').should.not.be.equal(merchant_encryptData);
+			rsa_crypto.sign(merchant_encryptStr,merchant_pri_key+'abc').should.not.be.equal(merchant_encryptData);
 		});
 		it('it should be not ok',function(){
-			rsa_crypto.rsaSign(merchant_encryptStr,merchant_pri_key+'=').should.not.be.equal(merchant_encryptData);
+			rsa_crypto.sign(merchant_encryptStr,merchant_pri_key+'=').should.not.be.equal(merchant_encryptData);
 		});
 	});
-	describe('#rsaVerify()->merchant',function(){
+	describe('#verify()->merchant',function(){
 		it('it should be ok',function(){
-			rsa_crypto.rsaVerify(merchant_encryptStr,merchant_encryptData,merchant_pub_key).should.be.equal(true);
+			rsa_crypto.verify(merchant_encryptStr,merchant_encryptData,merchant_pub_key).should.be.equal(true);
 		});
 		it('it should be not ok',function(){
-			rsa_crypto.rsaVerify(merchant_encryptStr+'fail',merchant_encryptData,merchant_pub_key).should.be.equal(false);
+			rsa_crypto.verify(merchant_encryptStr+'fail',merchant_encryptData,merchant_pub_key).should.be.equal(false);
 		});
 		it('it should be not ok',function(){
-			rsa_crypto.rsaVerify(merchant_encryptStr,merchant_encryptData+'fail',merchant_pub_key).should.be.equal(false);
+			rsa_crypto.verify(merchant_encryptStr,merchant_encryptData+'fail',merchant_pub_key).should.be.equal(false);
 		});
 	});
-	describe('#rsaSign()->nPay',function(){
+	describe('#sign()->nPay',function(){
 		it('it should be ok',function(){
-			rsa_crypto.rsaSign(nPay_encryptStr,npay_pri_key).should.be.equal(nPay_encryptData);
+			rsa_crypto.sign(nPay_encryptStr,npay_pri_key).should.be.equal(nPay_encryptData);
 		});
 	});
 	describe('#rsaVerify()->nPay',function(){
 		it('it should be ok',function(){
-			rsa_crypto.rsaVerify(nPay_encryptStr,nPay_encryptData,npay_pub_key).should.be.equal(true);
+			rsa_crypto.verify(nPay_encryptStr,nPay_encryptData,npay_pub_key).should.be.equal(true);
+		});
+	});
+	describe('#encrypt()',function(){
+		it('it should be ok',function(){
+			CONST.rsa_encrypt_base64 = rsa_crypto.encrypt(utf8.encode(merchant_encryptStr),merchant_pub_key);
+			CONST.rsa_encrypt_base64.should.not.be.equal('');
+		});
+	});
+	describe('#decrypt()',function(){
+		it('it should be ok',function(){
+			utf8.decode(rsa_crypto.decrypt(CONST.rsa_encrypt_base64,merchant_pri_key)).should.be.equal(merchant_encryptStr)
 		});
 	});
 });

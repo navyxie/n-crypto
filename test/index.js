@@ -39,21 +39,21 @@ var nCrypto = new index({
 });
 describe('index',function(){
 	describe('MD5',function(){
-		describe('#encrypt()',function(){
+		describe('#sign()',function(){
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(encryptJson,MD5);
+				var signVal = nCrypto.sign(encryptJson,MD5);
 				signVal.should.be.equal(md5Sign);
 			});
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(encryptJson,'md5');
+				var signVal = nCrypto.sign(encryptJson,'md5');
 				signVal.should.be.equal(md5Sign);
 			});
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(encryptJson);
+				var signVal = nCrypto.sign(encryptJson);
 				signVal.should.be.equal(md5Sign);
 			});
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(index_encryptStr,MD5);
+				var signVal = nCrypto.sign(index_encryptStr,MD5);
 				signVal.should.be.equal(md5Sign);
 			});
 		});
@@ -72,17 +72,17 @@ describe('index',function(){
 		});
 	});
 	describe('RSA',function(){
-		describe('#encrypt()',function(){
+		describe('#sign()',function(){
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(encryptJson,RSA);
+				var signVal = nCrypto.sign(encryptJson,RSA);
 				signVal.should.be.equal(rsaSign);
 			});
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(encryptJson,'rsa');
+				var signVal = nCrypto.sign(encryptJson,'rsa');
 				signVal.should.be.equal(rsaSign);
 			});
 			it('it should be ok',function(){
-				var signVal = nCrypto.encrypt(index_encryptStr,RSA);
+				var signVal = nCrypto.sign(index_encryptStr,RSA);
 				signVal.should.be.equal(strRsasign);
 			});
 		});
@@ -125,14 +125,14 @@ describe('index',function(){
 				signVal.should.be.equal(encryptData2);
 			});
 		});
-		describe('#verify()',function(){
-			it('it should be ok',function(){
-				nCrypto.verify(encryptData,CONST.des_md5_sign,MD5,DES).should.be.equal(true);
-			});
-			it('it should be not ok',function(){
-				nCrypto.verify(encryptData,CONST.des_md5_sign+'error',MD5,DES).should.be.equal(false);
-			});
-		});
+		// describe('#verify()',function(){
+		// 	it('it should be ok',function(){
+		// 		nCrypto.verify(encryptData,CONST.des_md5_sign,MD5,DES).should.be.equal(true);
+		// 	});
+		// 	it('it should be not ok',function(){
+		// 		nCrypto.verify(encryptData,CONST.des_md5_sign+'error',MD5,DES).should.be.equal(false);
+		// 	});
+		// });
 		describe('#decrypt()',function(){
 			it('it should be ok',function(){
 				var signVal = nCrypto.decrypt(encryptData,DES);
@@ -163,14 +163,14 @@ describe('index',function(){
 				signVal.should.be.equal(aes_encryptData);
 			});
 		});
-		describe('#verify()',function(){
-			it('it should be ok',function(){
-				nCrypto.verify(aes_encryptData,CONST.aes_md5_sign,MD5,AES).should.be.equal(true);
-			});
-			it('it should be not ok',function(){
-				nCrypto.verify(aes_encryptData,CONST.aes_md5_sign+'error',MD5,AES).should.be.equal(false);
-			});
-		});
+		// describe('#verify()',function(){
+		// 	it('it should be ok',function(){
+		// 		nCrypto.verify(aes_encryptData,CONST.aes_md5_sign,MD5,AES).should.be.equal(true);
+		// 	});
+		// 	it('it should be not ok',function(){
+		// 		nCrypto.verify(aes_encryptData,CONST.aes_md5_sign+'error',MD5,AES).should.be.equal(false);
+		// 	});
+		// });
 		describe('#verify()',function(){
 			it('it should be not ok',function(){
 				nCrypto.verify(aes_encryptData,CONST.aes_md5_sign+'error',MD5,RSA).should.be.equal(false);
@@ -193,6 +193,19 @@ describe('index',function(){
 				var jsonData = nCrypto.decrypt(CONST.aes_encrypt_json_str,AES,true);
 				jsonData.name.should.be.equal(encryptJson.name)
 			});
+		});
+	});
+	describe('RSA',function(){
+		describe('#encrypt()',function(){
+			it('rsa should be ok',function(){
+				CONST.rsa_encrypt_base64 = nCrypto.encrypt(aes_encryptStr,RSA);
+				CONST.rsa_encrypt_base64.should.not.be.equal('');
+			});		
+		});	
+		describe('#decrypt()',function(){
+			it('rsa should be ok',function(){
+				nCrypto.decrypt(CONST.index_mock_rsa_decrypt,RSA).should.be.equal(aes_encryptStr);
+			});		
 		});
 	});
 });

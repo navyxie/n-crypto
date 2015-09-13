@@ -33,14 +33,14 @@ var encryptJson = CONST.index_encryptJson;
 
 describe('n_crypto',function(){
 	describe('MD5',function(){
-		describe('#encrypt()',function(){
+		describe('#sign()',function(){
 			it('md5 it should be ok',function(){
-				n_crypto.encrypt(md5_encryptStr,MD5,md5_key).should.be.equal(md5_Md5Sign);
+				n_crypto.sign(utf8.encode(md5_encryptStr),MD5,md5_key).should.be.equal(md5_Md5Sign);
 			});
 		});
-		describe('#md5Verify()',function(){
+		describe('#verify()',function(){
 			it('md5 it should be ok',function(){
-				n_crypto.verify(md5_encryptStr,md5_Md5Sign,MD5,md5_key).should.be.equal(true);
+				n_crypto.verify(utf8.encode(md5_encryptStr),md5_Md5Sign,MD5,md5_key).should.be.equal(true);
 			});
 			it('md5 it should be not ok',function(){
 				n_crypto.verify(encryptStr,md5_Md5Sign+'error',MD5,md5_key).should.be.equal(false);
@@ -51,21 +51,21 @@ describe('n_crypto',function(){
 		});
 	});
 	describe('RSA',function(){
-		describe('#encrypt()',function(){
+		describe('#sign()',function(){
 			it('rsa it should be ok',function(){
-				n_crypto.encrypt(rsa_encryptStr,RSA,merchant_pri_key).should.be.equal(strRsasign);
+				n_crypto.sign(utf8.encode(rsa_encryptStr),RSA,merchant_pri_key).should.be.equal(strRsasign);
 			});
 		});
-		describe('#rsaVerify()',function(){
+		describe('#verify()',function(){
 			it('rsa it should be ok',function(){
-				n_crypto.verify(rsa_encryptStr,strRsasign,RSA,merchant_pub_key).should.be.equal(true);
+				n_crypto.verify(utf8.encode(rsa_encryptStr),strRsasign,RSA,merchant_pub_key).should.be.equal(true);
 			});
 		});
 	});
 	describe('DES',function(){
 		describe('#encrypt()',function(){
 			it('des should be ok',function(){
-				n_crypto.encrypt(encryptStr,DES,des_key).should.be.equal(encryptData);
+				n_crypto.encrypt(utf8.encode(encryptStr),DES,des_key).should.be.equal(encryptData);
 			});		
 		});	
 		describe('#decrypt()',function(){
@@ -73,16 +73,16 @@ describe('n_crypto',function(){
 				utf8.decode(n_crypto.decrypt(encryptData,DES,des_key)).should.be.equal(encryptStr);
 			});		
 		});
-		describe('#desVerify()',function(){
-			it('des should be ok',function(){
-				n_crypto.desVerify(encryptData,CONST.des_md5_sign,MD5,md5_key,des_key).should.be.equal(true);
-			});		
-		});
+		// describe('#desVerify()',function(){
+		// 	it('des should be ok',function(){
+		// 		n_crypto.desVerify(encryptData,CONST.des_md5_sign,MD5,md5_key,des_key).should.be.equal(true);
+		// 	});		
+		// });
 	});
 	describe('AES',function(){
 		describe('#encrypt()',function(){
 			it('des should be ok',function(){
-				n_crypto.encrypt(aes_encryptStr,AES,aes_key).should.be.equal(aes_encryptData);
+				n_crypto.encrypt(utf8.encode(aes_encryptStr),AES,aes_key).should.be.equal(aes_encryptData);
 			});		
 		});	
 		describe('#decrypt()',function(){
@@ -90,9 +90,22 @@ describe('n_crypto',function(){
 				utf8.decode(n_crypto.decrypt(aes_encryptData,AES,aes_key)).should.be.equal(aes_encryptStr);
 			});		
 		});
-		describe('#desVerify()',function(){
-			it('des should be ok',function(){
-				n_crypto.aesVerify(aes_encryptData,CONST.aes_md5_sign,MD5,md5_key,aes_key).should.be.equal(true);
+		// describe('#desVerify()',function(){
+		// 	it('des should be ok',function(){
+		// 		n_crypto.aesVerify(aes_encryptData,CONST.aes_md5_sign,MD5,md5_key,aes_key).should.be.equal(true);
+		// 	});		
+		// });
+	});
+	describe('RSA',function(){
+		describe('#encrypt()',function(){
+			it('rsa should be ok',function(){
+				CONST.rsa_encrypt_base64 = n_crypto.encrypt(aes_encryptStr,RSA,merchant_pub_key);
+				CONST.rsa_encrypt_base64.should.not.be.equal('');
+			});		
+		});	
+		describe('#decrypt()',function(){
+			it('rsa should be ok',function(){
+				n_crypto.decrypt(CONST.rsa_encrypt_base64,RSA,merchant_pri_key).should.be.equal(aes_encryptStr);
 			});		
 		});
 	});

@@ -9,7 +9,7 @@ module.exports = {
 	nPay_encryptData:'AX9YFNEcF8xbGvc5owkyyKeF2WCqOqrUhs1UZ0JtHOl7PJFESqL236Jf2sg2lNwZ6hAMkHUcefMFc46PSxvSjpm2reBvs+oVXhaTYijw4ag4W4Wl8tAw396+KDah4qZABqb8lbU65nfmsCJsSN31PW3K/LI1notpQHpM5IBp6OA=',
 	md5_key:'0123456789abcd0123456789',
 	md5_encryptStr:'navy_encryptStr_201509110233_伟大的中国',
-	md5Sign:'532885a7bb2beb8de68a3a4b3f5edf57',
+	md5Sign:'9ea648fc058a9f31799d1f397f45ed12',
 	des_key:'des-ede3_key_length26_ok',//24个字符长度
 	aes_key:'aes_128_length16',//16个字符长度
 	des_encryptStr:'country=中国&name=navy&url=https://github.com/navyxie',
@@ -37,5 +37,7 @@ module.exports = {
 		AES:'AES'
 	},
 	des_encrypt_json_str:'NkbcZoPyQ38sDzRx89cxE75HIOUOjnXjbYiAMNbGHtiZs2VA6vKMv43SfC2wH6knTlXqPVio8cSOJqTKD248GA==',
-	aes_encrypt_json_str:'OUe3OTUOQHFgyI2edg6TxMCLti175eRoMCj7aXTyRXv7fPRSgpOrTzZjAolYtodTc8SK6+T5q1MfTKfkJlbtGw=='
+	aes_encrypt_json_str:'OUe3OTUOQHFgyI2edg6TxMCLti175eRoMCj7aXTyRXv7fPRSgpOrTzZjAolYtodTc8SK6+T5q1MfTKfkJlbtGw==',
+	rsa_encrypt_base64:'Cr0xLSrO0/NGNQVkDqKJN11+N6CXJ2TNCxJh8kjLYkarRLrZa5VNUc0QISLbeCR1zzso4g5+HxD3ZBM3kw7M24kU/BTpKBOW70b+me3qCYVidDUDci4Q2fHEQjJcMr3BtLeWO/48uZoBBBQWA3hztL1vKLniAWKzqVnJe9zsatE=',
+	index_mock_rsa_decrypt:'l0y8/Y+olzlsYuqYNLj/0Jcpi55DjzxAKdl1DYTf5jOAPsRnbuFhbbJl+aa7qyLWiQPulS//B/+e3bpK56nUvFzJxO5Jqh2nHqHnzOOV9cmcI+SaWvltZUCROOxjfShhvxL6JG63aiAh4OlM8h1VHFbjvgzN+NHi+pq8s3n0U6Y='
 }
