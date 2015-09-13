@@ -14,7 +14,8 @@
 		"mocha": "^2.2.5",
 		"coveralls": "^2.11.3",
 		"istanbul": "^0.3.17",
-		"should": "^7.0.2"
+		"should": "^7.0.2",
+		"utf8": "^2.1.0"
 	},
 	"description": "加密解密模块",
 	"main": "index.js",

@@ -1,7 +1,8 @@
 var md5_crypto = require('../lib/md5_crypto');
-var md5_key = '0123456789abcd0123456789';
-var encryptStr = 'navy_encryptStr_201509110233_伟大的中国';
-var md5Sign = '532885a7bb2beb8de68a3a4b3f5edf57';
+var CONST = require('../data/const');
+var md5_key = CONST.md5_key;
+var encryptStr = CONST.md5_encryptStr;
+var md5Sign = CONST.md5Sign;
 var should = require('should');
 describe('md5_crypto',function(){
 	describe('#md5Sign()',function(){
