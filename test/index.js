@@ -147,7 +147,7 @@ describe('index',function(){
 		});
 		describe('#decrypt()->JSON',function(){
 			it('it should be ok',function(){
-				var jsonData = nCrypto.decryptToJson(CONST.des_encrypt_json_str,DES);
+				var jsonData = nCrypto.decrypt(CONST.des_encrypt_json_str,DES,true);
 				jsonData.name.should.be.equal(encryptJson.name)
 			});
 		});
