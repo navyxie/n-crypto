@@ -11,8 +11,10 @@ module.exports = {
 	md5_encryptStr:'navy_encryptStr_201509110233_伟大的中国',
 	md5Sign:'532885a7bb2beb8de68a3a4b3f5edf57',
 	des_key:'des-ede3_key_length_must_be_13ok',//32个字符长度
+	aes_key:'abcdeaaaaaaaaaaaaaaaaa',//22个字符长度
 	des_encryptStr:'country=中国&name=navy&url=https://github.com/navyxie',
 	des_encryptData:'ZfXzWxxCfDGl/YBa7nz2PYBvp6oI8S6aJi/2hIkhc1/k0mzHXxhnqshVU9dUuJ06N4O2fUp6kEX4BeXmW11C1A==',
+	aes_encryptData:'8MdtM+O1iJDGehryV4cQrtJUgwJ7DYu+yJbaAaOXiIS1985NnryyUUtCliQuXyl2PthYfZ4iQQgtovYfGFiU1Q==',
 	des_encryptStr2:'country=中国&name=篡改&url=https://github.com/navyxie',
 	des_encryptData2:'ZfXzWxxCfDGl/YBa7nz2PYBvp6oI8S6aoab/xa6UGU2KLv8zjzLtnOTSbMdfGGeqyFVT11S4nTo3g7Z9SnqQRfgF5eZbXULU',
 	index_encryptJson:{
