@@ -10,11 +10,13 @@ module.exports = {
 	md5_key:'0123456789abcd0123456789',
 	md5_encryptStr:'navy_encryptStr_201509110233_伟大的中国',
 	md5Sign:'532885a7bb2beb8de68a3a4b3f5edf57',
-	des_key:'des-ede3_key_length_must_be_13ok',//32个字符长度
+	des_key:'des-ede3_key_length26_ok',//24个字符长度
+	aes_key:'aes_128_length16',//16个字符长度
 	des_encryptStr:'country=中国&name=navy&url=https://github.com/navyxie',
-	des_encryptData:'ZfXzWxxCfDGl/YBa7nz2PYBvp6oI8S6aJi/2hIkhc1/k0mzHXxhnqshVU9dUuJ06N4O2fUp6kEX4BeXmW11C1A==',
+	des_encryptData:'RFv6PFFTlbAqK5puGAmH9hHXHPpF/bb0sQ2EN5R2yHiGq6fzflzNBwQaglmZKCLa9gPy9p8YsbgLnF23OYMbAw==',
+	aes_encryptData:'pSUi6Ogb69pw8Oqb9ahwwZxtIuOmTrg//SsRi12+isTb3ym3L++SsivylIo2X5dkxvdz4fvSb8pN/5LUBUa7FQ==',
 	des_encryptStr2:'country=中国&name=篡改&url=https://github.com/navyxie',
-	des_encryptData2:'ZfXzWxxCfDGl/YBa7nz2PYBvp6oI8S6aoab/xa6UGU2KLv8zjzLtnOTSbMdfGGeqyFVT11S4nTo3g7Z9SnqQRfgF5eZbXULU',
+	des_encryptData2:'RFv6PFFTlbAqK5puGAmH9hHXHPpF/bb0cww2tfL2kRFYdkBQdhhtf4arp/N+XM0HBBqCWZkoItr2A/L2nxixuAucXbc5gxsD',
 	index_encryptJson:{
 		name:"navy",
 		version:"1.0",
@@ -22,6 +24,7 @@ module.exports = {
 		age:201509110233
 	},
 	des_md5_sign:'1a7293d4db6feee60537309ced259e58',
+	aes_md5_sign:'1a7293d4db6feee60537309ced259e58',
 	index_encryptStr:'age=201509110233&country=中国&name=navy&version=1.0',
 	index_md5_key:'navy_test_201509110233',
 	index_encryptJson_md5Sign:'a12b2084d8c7297a25fcfe452af8257c',
@@ -33,5 +36,6 @@ module.exports = {
 		DES:'DES',
 		AES:'AES'
 	},
-	des_encrypt_json_str:'zb74/AdUFVSKSFGP0lZSN1nHJ70b+X+Rx4WEawWfmctpBIKlUwzTfn/67rts8VCGZq4UTFUVks34+JF4ypVqvQ=='
+	des_encrypt_json_str:'NkbcZoPyQ38sDzRx89cxE75HIOUOjnXjbYiAMNbGHtiZs2VA6vKMv43SfC2wH6knTlXqPVio8cSOJqTKD248GA==',
+	aes_encrypt_json_str:'OUe3OTUOQHFgyI2edg6TxMCLti175eRoMCj7aXTyRXv7fPRSgpOrTzZjAolYtodTc8SK6+T5q1MfTKfkJlbtGw=='
 }

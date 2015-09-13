@@ -6,6 +6,7 @@ var CONST = require('../data/const');
 var MD5 = CONST.sign_type.MD5;
 var RSA = CONST.sign_type.RSA;
 var DES = CONST.sign_type.DES;
+var AES = CONST.sign_type.AES;
 //#md5
 var md5_key = CONST.index_md5_key;
 var md5_encryptStr = CONST.index_encryptStr;
@@ -23,6 +24,10 @@ var encryptStr = CONST.des_encryptStr;
 var encryptData = CONST.des_encryptData;
 var encryptStr2 = CONST.des_encryptStr2;
 var encryptData2 = CONST.des_encryptData2;
+//#aes
+var aes_key = CONST.aes_key;
+var aes_encryptStr = CONST.des_encryptStr;
+var aes_encryptData = CONST.aes_encryptData;
 //#test data
 var encryptJson = CONST.index_encryptJson;
 
@@ -73,5 +78,22 @@ describe('n_crypto',function(){
 				n_crypto.desVerify(encryptData,CONST.des_md5_sign,MD5,md5_key,des_key).should.be.equal(true);
 			});		
 		});
-	})
+	});
+	describe('AES',function(){
+		describe('#encrypt()',function(){
+			it('des should be ok',function(){
+				n_crypto.encrypt(aes_encryptStr,AES,aes_key).should.be.equal(aes_encryptData);
+			});		
+		});	
+		describe('#decrypt()',function(){
+			it('des should be ok',function(){
+				utf8.decode(n_crypto.decrypt(aes_encryptData,AES,aes_key)).should.be.equal(aes_encryptStr);
+			});		
+		});
+		describe('#desVerify()',function(){
+			it('des should be ok',function(){
+				n_crypto.aesVerify(aes_encryptData,CONST.aes_md5_sign,MD5,md5_key,aes_key).should.be.equal(true);
+			});		
+		});
+	});
 });

@@ -3,8 +3,6 @@ var CONST = require('../data/const');
 var des_key = CONST.des_key;
 var encryptStr = CONST.des_encryptStr;
 var encryptData = CONST.des_encryptData;
-var encryptStr2 = CONST.des_encryptStr2;
-var encryptData2 = CONST.des_encryptData2;
 var should = require('should');
 var utf8 = require('utf8');
 describe('des_crypto',function(){
@@ -15,7 +13,6 @@ describe('des_crypto',function(){
 	});
 	describe('#decrypt()',function(){
 		it('it should be ok',function(){
-			console.log('decryptStr',encryptData,'des_key',des_key);
 			utf8.decode(des_crypto.decrypt(encryptData,des_key)).should.be.equal(encryptStr);
 		});
 		it('it should be not ok',function(){
