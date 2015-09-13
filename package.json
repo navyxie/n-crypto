@@ -1,9 +1,11 @@
 {
 	"name": "n-crypto",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"keywords":[
 		"MD5",
 		"RSA",
+		"DES",
+		"AES",
 		"加密",
 		"解密"
 	],
