@@ -5,7 +5,7 @@ var aes_encryptStr = CONST.des_encryptStr;
 var aes_encryptData = CONST.aes_encryptData;
 var should = require('should');
 var utf8 = require('utf8');
-describe.only('aes_crypto',function(){
+describe('aes_crypto',function(){
 	describe('#encrypt()',function(){
 		it('it should be ok',function(){
 			console.log('aes_key',aes_key);
