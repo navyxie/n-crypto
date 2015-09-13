@@ -15,13 +15,14 @@ describe('des_crypto',function(){
 	});
 	describe('#decrypt()',function(){
 		it('it should be ok',function(){
+			console.log('decryptStr',encryptData,'des_key',des_key);
 			utf8.decode(des_crypto.decrypt(encryptData,des_key)).should.be.equal(encryptStr);
 		});
 		it('it should be not ok',function(){
-			des_crypto.decrypt(encryptData+'a=',des_key).should.not.be.equal(encryptStr);
+			utf8.decode(des_crypto.decrypt(encryptData+'a=',des_key)).should.not.be.equal(encryptStr);
 		});
 		it('it should be not ok',function(){
-			des_crypto.decrypt(encryptData,des_key+'fail').should.be.equal('');
+			utf8.decode(des_crypto.decrypt(encryptData,des_key+'fail')).should.be.equal('');
 		});
 	});
 });
