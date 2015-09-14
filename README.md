@@ -27,7 +27,7 @@
 [`decrypt`](#decrypt)
 
 
-### 生成签名的API
+### 生成签名的API:sign
 
 <a name="sign" />
 
@@ -43,7 +43,7 @@ var signVal = nCrypto.sign(encryptJson,sign_type);
 console.log(signVal);//加密后返回的加密串
 ```
 
-### 验证签名API
+### 验证签名API:verify
 
 <a name="verify" />
 
@@ -60,7 +60,7 @@ var verifyResult =  nCrypto.verify(encryptJson,md5Sign,sign_type);
 console.log(verifyResult);//boolean值，true表示验签成功，false表示验签失败
 ```
 
-### 加密数据的API
+### 加密数据的API:encrypt
 
 <a name="encrypt" />
 
@@ -76,7 +76,7 @@ var encryptData = nCrypto.encrypt(encryptJson,sign_type);//base64
 console.log(encryptData);//加密后返回的base64加密串
 ```
 
-### 解密数据的API
+### 解密数据的API:decrypt
 
 <a name="decrypt" />
 
