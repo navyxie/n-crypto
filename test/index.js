@@ -1,4 +1,5 @@
 var should = require('should');
+var crypto = require('crypto');
 var index = require('../lib/index');
 var util = require('../lib/util');
 var CONST = require('../data/const');
@@ -198,13 +199,17 @@ describe('index',function(){
 	describe('RSA',function(){
 		describe('#encrypt()',function(){
 			it('rsa should be ok',function(){
-				CONST.rsa_encrypt_base64 = nCrypto.encrypt(aes_encryptStr,RSA);
-				CONST.rsa_encrypt_base64.should.not.be.equal('');
+				if(typeof crypto.publicEncrypt === 'function'){
+					CONST.rsa_encrypt_base64 = nCrypto.encrypt(aes_encryptStr,RSA);
+					CONST.rsa_encrypt_base64.should.not.be.equal('');
+				}			
 			});		
 		});	
 		describe('#decrypt()',function(){
 			it('rsa should be ok',function(){
-				nCrypto.decrypt(CONST.index_mock_rsa_decrypt,RSA).should.be.equal(aes_encryptStr);
+				if(typeof crypto.privateDecrypt === 'function'){
+					nCrypto.decrypt(CONST.index_mock_rsa_decrypt,RSA).should.be.equal(aes_encryptStr);
+				}
 			});		
 		});
 	});

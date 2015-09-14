@@ -1,4 +1,5 @@
 var n_crypto = require('../lib/n_crypto');
+var crypto = require('crypto');
 var should = require('should');
 var utf8 = require('utf8');
 var CONST = require('../data/const');
@@ -99,13 +100,17 @@ describe('n_crypto',function(){
 	describe('RSA',function(){
 		describe('#encrypt()',function(){
 			it('rsa should be ok',function(){
-				CONST.rsa_encrypt_base64 = n_crypto.encrypt(aes_encryptStr,RSA,merchant_pub_key);
-				CONST.rsa_encrypt_base64.should.not.be.equal('');
+				if(typeof crypto.publicEncrypt === 'function'){
+					CONST.rsa_encrypt_base64 = n_crypto.encrypt(aes_encryptStr,RSA,merchant_pub_key);
+					CONST.rsa_encrypt_base64.should.not.be.equal('');
+				}
 			});		
 		});	
 		describe('#decrypt()',function(){
 			it('rsa should be ok',function(){
-				n_crypto.decrypt(CONST.rsa_encrypt_base64,RSA,merchant_pri_key).should.be.equal(aes_encryptStr);
+				if(typeof crypto.publicEncrypt === 'function'){
+					n_crypto.decrypt(CONST.rsa_encrypt_base64,RSA,merchant_pri_key).should.be.equal(aes_encryptStr);
+				}
 			});		
 		});
 	});

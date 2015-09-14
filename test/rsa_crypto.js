@@ -1,4 +1,5 @@
 var utf8 = require('utf8');
+var crypto = require('crypto');
 var should = require('should');
 var CONST = require('../data/const');
 var rsa_crypto = require('../lib/rsa_crypto');
@@ -45,13 +46,17 @@ describe('rsa_crypto',function(){
 	});
 	describe('#encrypt()',function(){
 		it('it should be ok',function(){
-			CONST.rsa_encrypt_base64 = rsa_crypto.encrypt(utf8.encode(merchant_encryptStr),merchant_pub_key);
-			CONST.rsa_encrypt_base64.should.not.be.equal('');
+			if(typeof crypto.publicEncrypt === 'function'){
+				CONST.rsa_encrypt_base64 = rsa_crypto.encrypt(utf8.encode(merchant_encryptStr),merchant_pub_key);
+				CONST.rsa_encrypt_base64.should.not.be.equal('');
+			}
 		});
 	});
 	describe('#decrypt()',function(){
 		it('it should be ok',function(){
-			utf8.decode(rsa_crypto.decrypt(CONST.rsa_encrypt_base64,merchant_pri_key)).should.be.equal(merchant_encryptStr)
+			if(typeof crypto.publicEncrypt === 'function'){
+				utf8.decode(rsa_crypto.decrypt(CONST.rsa_encrypt_base64,merchant_pri_key)).should.be.equal(merchant_encryptStr)
+			}
 		});
 	});
 });
