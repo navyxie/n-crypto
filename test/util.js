@@ -37,6 +37,6 @@ describe('util',function(){
 			sign:'ok'
 		};
 		var b = util.encryptStr(a);
-		b.should.be.equal('name=navy&num=1');
+		b.should.be.equal('name=navy&num=1&sign=ok');
 	});
 });
