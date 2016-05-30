@@ -1,5 +1,7 @@
 # 签名与验签&加密与解密
     算法说明：签名算法MD5和RSA(RSA-SHA1)，数据加密算法RSA(RSA_NO_PADDING,node>0.12.0),AES(aes-128-ecb),DES(des-ede3)，返回base64格式数据。
+[![Build Status via Travis CI](https://travis-ci.org/navyxie/n-crypto.svg?branch=master)](https://travis-ci.org/navyxie/n-crypto) [![Coverage Status](https://coveralls.io/repos/github/navyxie/n-crypto/badge.svg?branch=master)](https://coveralls.io/github/navyxie/n-crypto?branch=master)
+
 
 ## 安装
     npm install n-crypto
