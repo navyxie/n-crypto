@@ -14,14 +14,14 @@
         "解密"
     ],
     "dependencies": {
-        "utf8": "^2.1.0"
+        "utf8": "^2.1.1"
     },
     "devDependencies": {
         "mocha": "^2.2.5",
         "coveralls": "^2.11.3",
         "istanbul": "^0.3.17",
         "should": "^7.0.2",
-        "utf8": "^2.1.0",
+        "utf8": "^2.1.1",
         "istanbul": "^0.4.3",
         "coveralls": "2.11.9"
     },

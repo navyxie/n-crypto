@@ -17,7 +17,7 @@ describe('aes_crypto',function(){
                         utf8.decode(aes_crypto.decrypt(aes_encryptData,aes_key)).should.be.equal(aes_encryptStr);
                 });
                 it('it should be not ok',function(){
-                        utf8.decode(aes_crypto.decrypt(aes_encryptData+'a=',aes_key)).should.not.be.equal(aes_encryptStr);
+                        utf8.decode(aes_crypto.decrypt('a=',aes_key)).should.not.be.equal(aes_encryptStr);
                 });
                 it('it should be not ok',function(){
                         utf8.decode(aes_crypto.decrypt(aes_encryptData,aes_key+'fail')).should.be.equal('');

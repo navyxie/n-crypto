@@ -31,7 +31,7 @@ describe('rsa_crypto',function(){
                         rsa_crypto.verify(merchant_encryptStr+'fail',merchant_encryptData,merchant_pub_key).should.be.equal(false);
                 });
                 it('it should be not ok',function(){
-                        rsa_crypto.verify(merchant_encryptStr,merchant_encryptData+'fail',merchant_pub_key).should.be.equal(false);
+                        rsa_crypto.verify(merchant_encryptStr,('fail123'),merchant_pub_key).should.be.equal(false);
                 });
         });
         describe('#sign()->nPay',function(){

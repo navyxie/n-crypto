@@ -16,7 +16,7 @@ describe('des_crypto',function(){
                         utf8.decode(des_crypto.decrypt(encryptData,des_key)).should.be.equal(encryptStr);
                 });
                 it('it should be not ok',function(){
-                        utf8.decode(des_crypto.decrypt(encryptData+'a=',des_key)).should.not.be.equal(encryptStr);
+                        utf8.decode(des_crypto.decrypt('a=',des_key)).should.not.be.equal(encryptStr);
                 });
                 it('it should be not ok',function(){
                         utf8.decode(des_crypto.decrypt(encryptData,des_key+'fail')).should.be.equal('');
